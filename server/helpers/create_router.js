@@ -33,6 +33,7 @@ const createRouter = (collection)=> {
         const id = req.params.id
         const updateData = req.body
         collection.updateOne({_id: new ObjectId(id)},{$set: updateData})
+        .then(result => res.json(result))
     }
     
     return router

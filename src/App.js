@@ -26,7 +26,7 @@ function App() {
   }
 
   const checkIn = (id)=>{
-    updateBooking(id)
+    updateBooking(id,)
     
   }
 
