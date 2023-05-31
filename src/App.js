@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import HotelHeader from "./components/HotelHeader";
+import HotelForm from "./components/HotelForm";
+import BookingsGrid from "./components/BookingsGrid";
+import { useEffect, useState } from "react";
+import {getBookings} from "./HotelService";
+import { updateBooking } from "./HotelService";
 
 function App() {
+
+  const [bookings, setBookings] = useState([])
+
+  useEffect(()=>{
+    getBookings().then((allBookings)=>{
+      setBookings(allBookings)
+    }, [])
+  })
+
+
+  const addBooking = (booking)=> {
+    setBookings([...bookings, booking ]);
+  }
+
+  const removeBooking = (id) => {
+    const bookingsToKeep = bookings.filter((item)=> item._id !== id)
+    setBookings(bookingsToKeep)
+  }
+
+  const checkIn = (id)=>{
+    updateBooking(id)
+    
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+  <HotelHeader/>
+  <HotelForm addBooking={addBooking}/>
+  <BookingsGrid bookings={bookings} removeBooking={removeBooking} checkIn={checkIn}/>
+   </>
   );
 }
 
