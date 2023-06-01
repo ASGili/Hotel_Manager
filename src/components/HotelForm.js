@@ -19,13 +19,15 @@ const HotelForm = ({addBooking})=> {
     }
 
     return (
-        <form onSubmit={handleSubmit} method="post">
+        <>
+        <form id="hotel_form" onSubmit={handleSubmit} method="post">
             <label htmlFor="name">Guest Name: </label>
             <input onChange={onChange} type="text" id="name" value={formData.name} required/>
             <label htmlFor="email">Guest Email: </label>
             <input onChange={onChange} type="text" id="email" value={formData.email} required/>
             <input type="submit" value="Save Booking"/>
         </form>
+        </>
     )
 }
 

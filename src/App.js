@@ -25,9 +25,8 @@ function App() {
     setBookings(bookingsToKeep)
   }
 
-  const checkIn = (id)=>{
-    updateBooking(id,)
-    
+  const checkIn = (bookingToChange)=>{
+    updateBooking(bookingToChange) 
   }
 
   return (

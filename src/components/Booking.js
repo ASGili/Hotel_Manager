@@ -14,7 +14,12 @@ const Booking = ({booking, removeBooking, checkIn})=> {
     const handleCheckbox = (event) => {
         const newStatus = event.target.checked
         setCheckbox(newStatus)
-        checkIn(booking._id,booking)
+        checkIn({
+            _id: booking._id,
+            name: booking.name,
+            email: booking.email,
+            status: !checkbox
+        })
     }
 
     return (

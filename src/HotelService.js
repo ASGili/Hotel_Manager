@@ -9,18 +9,18 @@ export const postBooking = (payload) => {
         method: 'POST', 
         body: JSON.stringify(payload),
         headers: {'Content-Type': 'application/json'}
-})
-.then(response => response.json())
+    })
+    .then(response => response.json())
 }
 
 export const deleteBooking = (id)=> {
-    return fetch(baseURL + id,{
+    return fetch(baseURL + id, {
         method:'DELETE'
 })
 }
 
-export const updateBooking = (id,payload)=> {
-    return fetch(baseURL + id, {
+export const updateBooking = (payload)=> {
+    return fetch(baseURL + payload._id, {
         method: 'PUT',
         body: JSON.stringify(payload),
         headers: {'Content-Type': 'application/json'}
